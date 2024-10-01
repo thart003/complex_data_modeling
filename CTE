@@ -7,6 +7,17 @@ this_season AS (
   WHERE season = 1996
 )
 
-SELECT * FROM last_season ls
+SELECT 
+      COALESCE(ls.player_name, ts.player_name) as player_name,
+      COALESCE(ls.height, ts.height) as height,
+      COALESCE(ls.college, ts.college) as college,
+      COALESCE(ls.country, ts.country) as country,
+      COALESCE(ls.draft_number, ts.draft_number) as draft_year,
+      NULL as seasons,
+      ts.season IS NOT NULL THEN 0 ELSE years_since_last_active + 1 END as years_since_last_active,
+      CASE WHEN ts.season IS NOT NULL THEN 0 ELSE years_since_last_active + 1 END as years_since_last_active,
+      COALESCE (ts.season, ls.current_season + 1) as current_season
+    
+    FROM last_season ls
     FULL OUTER JOIN this_season ts
     ON ls.player_name = ts.pleyer_name
