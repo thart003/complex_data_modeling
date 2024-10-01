@@ -7,4 +7,6 @@ this_season AS (
   WHERE season = 1996
 )
 
-SELECT 
+SELECT * FROM last_season ls
+    FULL OUTER JOIN this_season ts
+    ON ls.player_name = ts.pleyer_name
