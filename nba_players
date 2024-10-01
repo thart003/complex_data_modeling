@@ -7,6 +7,7 @@ CREATE TABLE taylorhart.nba_players (
   draft_round VARCHAR,
   draft_number VARCHAR,
   season ARRAY(ROW(
+    season INTEGER,
     age INTEGER,
     weight INTEGER,
     pts DOUBLE,
