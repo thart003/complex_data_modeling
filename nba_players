@@ -6,17 +6,18 @@ CREATE TABLE taylorhart.nba_players (
   draft_year VARCHAR,
   draft_round VARCHAR,
   draft_number VARCHAR,
-  season ARRAY[ROW(
+  season ARRAY(ROW(
     age INTEGER,
     weight INTEGER,
     pts DOUBLE,
     reb DOUBLE,
     ast DOUBLE
-  )],
+  )),
   is_active BOOLEAN,
   years_since_last_active INTEGER,
   current_season INTEGER
-
-
-
+)
+WITH (
+  format = 'PARQUET',
+  partitioning = ARRAY['current_season']
 )
