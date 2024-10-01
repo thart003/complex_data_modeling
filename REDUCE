@@ -1,0 +1,5 @@
+SELECT player_name,
+    REDUCE(seasons, 0, (cumulator, r)-> cumulator + r.pts * r.gp, s -> s) as total_points
+FROM taylorhart.nba_players
+WHERE current_season = 2002
+AND player_name = 'Elton Brand'
