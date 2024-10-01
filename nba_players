@@ -1,0 +1,22 @@
+CREATE TABLE taylorhart.nba_players (
+  player_name VARCHAR,
+  height VARCHAR,
+  college VARCHAR,
+  country VARCHAR,
+  draft_year VARCHAR,
+  draft_round VARCHAR,
+  draft_number VARCHAR,
+  season ARRAY[ROW(
+    age INTEGER,
+    weight INTEGER,
+    pts DOUBLE,
+    reb DOUBLE,
+    ast DOUBLE
+  )],
+  is_active BOOLEAN,
+  years_since_last_active INTEGER,
+  current_season INTEGER
+
+
+
+)
