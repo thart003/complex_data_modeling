@@ -4,7 +4,7 @@ WITH last_season AS (
   WHERE current_season = 1995
 ),
 this_season AS (
-  SELECT * FROM database.nba_player_seasons
+  SELECT * FROM taylorhart.nba_player_seasons
   WHERE season = 1996
 )
 
