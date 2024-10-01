@@ -1,3 +1,4 @@
+INSERT INTO taylorhart.nba_players
 WITH last_season AS (
   SELECT * FROM taylorhart_nba_players
   WHERE current_season = 1995
