@@ -1,0 +1,10 @@
+WITH last_season AS (
+  SELECT * FROM taylorhart_nba_players
+  WHERE current_season = 1995
+),
+this_season AS (
+  SELECT * FROM database.nba_player_seasons
+  WHERE season = 1996
+)
+
+SELECT 
