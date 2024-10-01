@@ -1,0 +1,5 @@
+SELECT player_name, t.*
+FROM taylorhart.nba_players
+CROSS JOIN UNNEST(seasons) as t
+WHERE current_season = 2002
+AND player_name = 'Elton Brand'
