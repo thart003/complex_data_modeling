@@ -15,7 +15,11 @@ SELECT
       COALESCE(ls.draft_year, ts.draft_year) as draft_year,
       COALESCE(ls.draft_round, ts.draft_round) as draft_round,
       COALESCE(ls.draft_number, ts.draft_number) as draft_number,
-      NULL as seasons,
+      CASE
+        WHEN ts.season IS NULL THEN ls.seasons
+        WHEN ts.seasons IS NOT NULL and ls.seasons IS NULL THEN 
+            ARRAY[ROW(ts.season, ts.age, ts.weight, ts.gp, ts.pts, ts.ast, ts.reb)] || ls.seasons
+      END as seasons,
       ts.season IS NOT NULL THEN 0 ELSE years_since_last_active + 1 END as years_since_last_active,
       CASE WHEN ts.season IS NOT NULL THEN 0 ELSE years_since_last_active + 1 END as years_since_last_active,
       COALESCE (ts.season, ls.current_season + 1) as current_season
